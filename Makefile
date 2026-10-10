@@ -1,6 +1,6 @@
 # SPDX-License-Identifier: GPL-2.0-or-later
 
-DEVELOPER_DIR ?= /Applications/Xcode.app/Contents/Developer
+DEVELOPER_DIR ?= $(shell if [ -d /Applications/Xcode.app/Contents/Developer ]; then echo /Applications/Xcode.app/Contents/Developer; else xcode-select -p; fi)
 export DEVELOPER_DIR
 
 CONFIG ?= Debug
@@ -29,6 +29,7 @@ build: project
 		-project $(PROJECT) \
 		-scheme $(SCHEME) \
 		-configuration $(CONFIG) \
+		-destination "platform=macOS" \
 		CODE_SIGN_IDENTITY="$(IDENTITY)" \
 		CODE_SIGN_STYLE=Manual \
 		build
@@ -45,6 +46,7 @@ test: project
 		-project $(PROJECT) \
 		-scheme MacBDEMounterTests \
 		-configuration Debug \
+		-destination "platform=macOS" \
 		CODE_SIGN_IDENTITY="-" \
 		CODE_SIGN_STYLE=Manual \
 		test

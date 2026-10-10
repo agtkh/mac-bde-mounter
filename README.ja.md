@@ -61,7 +61,7 @@ Apple の高額な有料開発者証明書（年間$99）を介さずにオー�
 ### 簡単3ステップで使い始める
 
 1. **DMG をダウンロード**:
-   [**GitHub Releases**](https://github.com/agtkh/mac-bed-mounter/releases) から最新の `MacBDEMounter.dmg` をダウンロードします。
+   [**GitHub Releases**](https://github.com/agtkh/mac-bde-mounter/releases) から最新の `MacBDEMounter.dmg` をダウンロードします。
 2. **Applications に配置**:
    ダウンロードした `MacBDEMounter.dmg` を開き、`MacBDEMounter.app` を **Applications** フォルダにドラッグ＆ドロップします。
 3. **自己署名（Gatekeeper 検疫解除）を実行**:

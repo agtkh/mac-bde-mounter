@@ -61,7 +61,7 @@ Because this is an independent open-source project distributed without Apple's p
 ### 3-Step Quick Start
 
 1. **Download the DMG**:
-   Grab the latest `MacBDEMounter.dmg` from [**GitHub Releases**](https://github.com/agtkh/mac-bed-mounter/releases).
+   Grab the latest `MacBDEMounter.dmg` from [**GitHub Releases**](https://github.com/agtkh/mac-bde-mounter/releases).
 2. **Move to Applications**:
    Open `MacBDEMounter.dmg` and drag `MacBDEMounter.app` into your **Applications** folder.
 3. **Run Self-Sign (Clear Gatekeeper)**:
