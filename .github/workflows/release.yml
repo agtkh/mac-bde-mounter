@@ -12,6 +12,15 @@ jobs:
     permissions:
       contents: write
 
+    env:
+      DEVELOPER_ID_CERT_BASE64: ${{ secrets.DEVELOPER_ID_CERT_BASE64 }}
+      DEVELOPER_ID_CERT_PASSWORD: ${{ secrets.DEVELOPER_ID_CERT_PASSWORD }}
+      DEVELOPER_ID_IDENTITY: ${{ secrets.DEVELOPER_ID_IDENTITY }}
+      APPLE_TEAM_ID: ${{ secrets.APPLE_TEAM_ID }}
+      NOTARY_API_KEY_BASE64: ${{ secrets.NOTARY_API_KEY_BASE64 }}
+      NOTARY_KEY_ID: ${{ secrets.NOTARY_KEY_ID }}
+      NOTARY_ISSUER_ID: ${{ secrets.NOTARY_ISSUER_ID }}
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -35,10 +44,8 @@ jobs:
           make test
 
       - name: Set up Developer ID Certificate
-        if: ${{ secrets.DEVELOPER_ID_CERT_BASE64 != '' }}
+        if: env.DEVELOPER_ID_CERT_BASE64 != ''
         env:
-          DEVELOPER_ID_CERT_BASE64: ${{ secrets.DEVELOPER_ID_CERT_BASE64 }}
-          DEVELOPER_ID_CERT_PASSWORD: ${{ secrets.DEVELOPER_ID_CERT_PASSWORD }}
           KEYCHAIN_PASSWORD: ${{ secrets.KEYCHAIN_PASSWORD || 'actions-temp-keychain' }}
         run: |
           KEYCHAIN_PATH=$RUNNER_TEMP/build.keychain
@@ -53,8 +60,8 @@ jobs:
 
       - name: Build and Sign Release App
         env:
-          IDENTITY: ${{ secrets.DEVELOPER_ID_IDENTITY || '-' }}
-          TEAM_ID: ${{ secrets.APPLE_TEAM_ID || '' }}
+          IDENTITY: ${{ env.DEVELOPER_ID_IDENTITY || '-' }}
+          TEAM_ID: ${{ env.APPLE_TEAM_ID || '' }}
         run: |
           make CONFIG=Release build
           make CONFIG=Release IDENTITY="$IDENTITY" sign
@@ -64,11 +71,7 @@ jobs:
           make CONFIG=Release dmg
 
       - name: Notarize DMG (Optional)
-        if: ${{ secrets.NOTARY_API_KEY_BASE64 != '' && secrets.NOTARY_KEY_ID != '' && secrets.NOTARY_ISSUER_ID != '' }}
-        env:
-          NOTARY_API_KEY_BASE64: ${{ secrets.NOTARY_API_KEY_BASE64 }}
-          NOTARY_KEY_ID: ${{ secrets.NOTARY_KEY_ID }}
-          NOTARY_ISSUER_ID: ${{ secrets.NOTARY_ISSUER_ID }}
+        if: env.NOTARY_API_KEY_BASE64 != '' && env.NOTARY_KEY_ID != '' && env.NOTARY_ISSUER_ID != ''
         run: |
           mkdir -p ~/.appstoreconnect/private_keys
           echo "$NOTARY_API_KEY_BASE64" | base64 --decode > ~/.appstoreconnect/private_keys/AuthKey_${NOTARY_KEY_ID}.p8
