@@ -1,0 +1,47 @@
+--- a/src/dislocker-fuse.c
++++ b/src/dislocker-fuse.c
+@@ -1,5 +1,17 @@
+ 	/* Compute the new argc given to FUSE */
+ 	size_t new_argc = (size_t)(argc - param_idx + 1);
++#if defined(__APPLE__) || defined(__DARWIN)
++	int has_s = 0;
++	for(int i = param_idx; i < argc; ++i) {
++		if(strcmp(argv[i], "-s") == 0) {
++			has_s = 1;
++			break;
++		}
++	}
++	if(!has_s) {
++		new_argc++;
++	}
++#endif
+ 	dis_printf(L_DEBUG, "New value for argc: %d\n", new_argc);
+ 
+ 	char** new_argv = dis_malloc(new_argc * sizeof(char*));
+@@ -9,11 +21,22 @@
+ 	*new_argv = dis_malloc(lg);
+ 	memcpy(*new_argv, argv[0], lg);
+ 
++	size_t cur = 1;
++#if defined(__APPLE__) || defined(__DARWIN)
++	if(!has_s) {
++		const char* s_str = "-s";
++		new_argv[cur] = dis_malloc(strlen(s_str) + 1);
++		memcpy(new_argv[cur], s_str, strlen(s_str) + 1);
++		cur++;
++	}
++#endif
++
+ 	/* Get all of the parameters from param_idx till the end */
+ 	size_t loop = 0;
+-	for(loop = 1; loop < new_argc; ++loop)
++	for(loop = (size_t)param_idx; loop < (size_t)argc; ++loop)
+ 	{
+-		lg = strlen(argv[(size_t)param_idx + loop - 1]) + 1;
+-		*(new_argv + loop) = dis_malloc(lg);
+-		memcpy(*(new_argv + loop), argv[(size_t)param_idx + loop - 1], lg);
++		lg = strlen(argv[loop]) + 1;
++		*(new_argv + cur) = dis_malloc(lg);
++		memcpy(*(new_argv + cur), argv[loop], lg);
++		cur++;
+ 	}

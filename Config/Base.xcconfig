@@ -1,0 +1,14 @@
+// SPDX-License-Identifier: GPL-2.0-or-later
+
+BLM_APP_NAME = MacBDEMounter
+BLM_DISPLAY_NAME = Mac BDE Mounter
+BLM_BUNDLE_ID = top.agata.MacBDEMounter
+MARKETING_VERSION = 1.0.0
+CURRENT_PROJECT_VERSION = 1
+MACOSX_DEPLOYMENT_TARGET = 13.0
+SWIFT_VERSION = 5.0
+
+// Code signing defaults (ad-hoc for local development, overridden by Makefile / CI)
+CODE_SIGN_STYLE = Manual
+DEVELOPMENT_TEAM =
+CODE_SIGN_IDENTITY = -

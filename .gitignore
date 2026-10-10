@@ -1,0 +1,23 @@
+# macOS
+.DS_Store
+*.swp
+*~
+
+# Xcode / Build
+build/
+build.nosync/
+DerivedData/
+*.profraw
+*.xcodeproj
+*.xcworkspace
+!MacBDEMounter.xcodeproj
+xcuserdata/
+
+# Vendor build outputs & caches (downloads and compiled dist)
+vendor/downloads/
+vendor/src/
+vendor/prefix/
+vendor/dist/
+
+# Scratch
+scratch/

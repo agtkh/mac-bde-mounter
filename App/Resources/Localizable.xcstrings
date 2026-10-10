@@ -1,0 +1,588 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+    "about.author.label" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Author:" } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "作者:" } }
+      }
+    },
+    "about.button.close" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Close" } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "閉じる" } }
+      }
+    },
+    "about.button.license" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "View LICENSE (GPLv2)" } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "LICENSE (GPLv2) を表示" } }
+      }
+    },
+    "about.button.notices" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "View THIRD_PARTY_NOTICES.md" } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "サードパーティ通知を表示" } }
+      }
+    },
+    "about.button.uninstall" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Uninstall..." } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "アンインストール..." } }
+      }
+    },
+    "about.license.label" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "License:" } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "ライセンス:" } }
+      }
+    },
+    "about.license.main" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Main License: GNU General Public License v2.0 (GPL-2.0-or-later)" } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "メインライセンス: GNU General Public License v2.0 (GPL-2.0-or-later)" } }
+      }
+    },
+    "about.notFound.alert %@" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "%@ not found in bundle." } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "バンドル内に %@ が見つかりませんでした。" } }
+      }
+    },
+    "about.notice.label" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "License Notice & Conditions:" } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "ライセンス条文・条件:" } }
+      }
+    },
+    "about.oss.list.header" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Bundled OSS / Libraries" } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "同梱オープンソースライブラリ" } }
+      }
+    },
+    "about.repository.link" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Repository ↗" } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "リポジトリ ↗" } }
+      }
+    },
+    "about.trademark.body" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "BitLocker is a trademark or registered trademark of Microsoft Corporation in the United States and/or other countries. Mac and macOS are trademarks of Apple Inc., registered in the U.S. and other countries.\n\nMac BDE Mounter is an independent open-source project and is not affiliated with, sponsored by, or endorsed by Microsoft Corporation or Apple Inc." } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "BitLocker は、米国 Microsoft Corporation の米国およびその他の国における商標または登録商標です。Mac および macOS は、米国およびその他の国で登録された Apple Inc. の商標です。\n\nMac BDE Mounter は独立したオープンソースプロジェクトであり、Microsoft Corporation または Apple Inc. とは提携・後援・承認の関係にありません。" } }
+      }
+    },
+    "about.trademark.title" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Trademarks & Disclaimers" } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "商標および免責事項" } }
+      }
+    },
+    "about.window.title" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "About & Open Source Software - Mac BDE Mounter" } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "このアプリとオープンソースについて - Mac BDE Mounter" } }
+      }
+    },
+    "app.author.label" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Author:" } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "作者:" } }
+      }
+    },
+    "app.author.name" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "K. Agata" } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "K. Agata" } }
+      }
+    },
+    "app.name" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Mac BDE Mounter" } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "Mac BDE Mounter" } }
+      }
+    },
+    "app.version.format %@ %@" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "v%@ (build %@)" } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "v%@ (build %@)" } }
+      }
+    },
+    "common.cancel" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Cancel" } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "キャンセル" } }
+      }
+    },
+    "common.close" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Close" } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "閉じる" } }
+      }
+    },
+    "common.error.prefix %@" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Error: %@" } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "エラー: %@" } }
+      }
+    },
+    "common.ok" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "OK" } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "OK" } }
+      }
+    },
+    "drive.action.eject" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Eject" } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "取り出す" } }
+      }
+    },
+    "drive.action.openInFinder.tooltip" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Open in Finder" } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "Finder で開く" } }
+      }
+    },
+    "drive.action.unlock" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Unlock" } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "ロック解除" } }
+      }
+    },
+    "helper.error.authFailed" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Incorrect password or recovery key." } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "パスワードまたは回復キーが正しくありません。" } }
+      }
+    },
+    "helper.error.busy" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Drive is busy or files are currently in use." } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "ドライブが使用中、またはファイルが開かれています。" } }
+      }
+    },
+    "helper.error.fuseTMissing" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "FUSE-T filesystem driver is missing or failed to initialize." } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "FUSE-T ファイルシステムドライバが見つからないか、初期化に失敗しました。" } }
+      }
+    },
+    "helper.error.general" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "An unexpected helper error occurred." } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "予期せぬヘルパーエラーが発生しました。" } }
+      }
+    },
+    "helper.error.invalidArgument" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Invalid drive name or parameter." } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "無効なドライブ名またはパラメータです。" } }
+      }
+    },
+    "helper.error.notBitLocker" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "The selected drive is not encrypted with BitLocker®." } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "選択されたドライブは BitLocker® 暗号化ドライブではありません。" } }
+      }
+    },
+    "helper.error.peerUntrusted" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Security verification between app and helper failed." } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "アプリとヘルパー間のセキュリティ検証に失敗しました。" } }
+      }
+    },
+    "helper.error.timeout" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Operation timed out." } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "処理がタイムアウトしました。" } }
+      }
+    },
+    "helper.error.toolFailed" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Decryption engine failed." } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "復号エンジンの実行に失敗しました。" } }
+      }
+    },
+    "menu.empty.noDrives" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "No BitLocker® drives detected." } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "BitLocker® ドライブが検出されていません。" } }
+      }
+    },
+    "menu.footer.about" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "About & Licenses..." } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "このアプリについて..." } }
+      }
+    },
+    "menu.footer.quit" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Quit" } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "終了" } }
+      }
+    },
+    "menu.footer.setup" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Setup..." } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "セットアップ..." } }
+      }
+    },
+    "menu.footer.updates" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Updates..." } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "アップデート確認..." } }
+      }
+    },
+    "menu.rescan.button" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Rescan" } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "再スキャン" } }
+      }
+    },
+    "menu.rescan.tooltip" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Rescan connected drives" } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "再スキャン" } }
+      }
+    },
+    "menu.title" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Mac BDE Mounter" } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "Mac BDE Mounter" } }
+      }
+    },
+    "menu.warning.fda" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Full Disk Access Required" } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "フルディスクアクセスの許可が必要です" } }
+      }
+    },
+    "menu.warning.fda.button" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Open Settings" } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "設定を開く" } }
+      }
+    },
+    "menu.warning.helper" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Helper Update Required" } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "ヘルパーの更新が必要です" } }
+      }
+    },
+    "menu.warning.helper.button" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Update" } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "更新" } }
+      }
+    },
+    "notification.mounted.body" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Click to reveal in Finder" } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "クリックして Finder で開く" } }
+      }
+    },
+    "notification.mounted.title %@" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "%@ mounted" } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "%@ をマウントしました" } }
+      }
+    },
+    "onboarding.description" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "To automatically detect and securely mount BitLocker®-encrypted drives, the following system permissions are required." } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "BitLocker® 暗号化ドライブを自動検知して安全にマウントするために、以下のシステム設定が必要です。" } }
+      }
+    },
+    "onboarding.fda.button" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Open Settings" } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "設定を開く" } }
+      }
+    },
+    "onboarding.fda.description" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Required to read BitLocker metadata headers on external USB disks (personal files are never accessed)." } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "外部 USB メモリの暗号化ヘッダを読み取るために必要です（個人ファイルには一切アクセスしません）。" } }
+      }
+    },
+    "onboarding.fda.relaunchButton" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Relaunch App" } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "アプリを再起動" } }
+      }
+    },
+    "onboarding.fda.restartNotice" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "⚠️ After enabling Full Disk Access in System Settings, the application must be restarted to take effect." } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "⚠️ システム設定で許可した後は、設定を反映するためにアプリの再起動が必要です。" } }
+      }
+    },
+    "onboarding.fda.title" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "1. Full Disk Access" } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "1. フルディスクアクセス (Full Disk Access)" } }
+      }
+    },
+    "onboarding.footer.done" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Done & Start" } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "完了して開始" } }
+      }
+    },
+    "onboarding.footer.recheck" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Recheck Settings" } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "設定を再確認" } }
+      }
+    },
+    "onboarding.footer.uninstall" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Uninstall..." } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "アンインストール..." } }
+      }
+    },
+    "onboarding.helper.description" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "System background daemon for secure dislocker execution and volume mounting." } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "dislocker の安全な実行と復号ボリュームのマウントを行うシステム常駐サービスです。" } }
+      }
+    },
+    "onboarding.helper.fda.description" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Raw disk device access (/dev/rdisk*) is required. Click the button below, then drag the highlighted helper binary into the Full Disk Access list in System Settings." } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "raw ディスクノード (/dev/rdisk*) を読み取る権限が必要です。下のボタンを押して、Finder でハイライト表示されたヘルパーファイルをシステム設定の「フルディスクアクセス」一覧にドラッグ＆ドロップしてください。" } }
+      }
+    },
+    "onboarding.helper.fda.revealButton" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Reveal in Finder & Open Settings" } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "Finderで表示して設定を開く" } }
+      }
+    },
+    "onboarding.helper.fda.title %@" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Helper daemon (%@) requires Full Disk Access" } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "ヘルパーツール (%@) にフルディスクアクセスが必要です" } }
+      }
+    },
+    "onboarding.helper.install" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Install" } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "インストール" } }
+      }
+    },
+    "onboarding.helper.reinstall" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Reinstall" } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "再インストール" } }
+      }
+    },
+    "onboarding.helper.title" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "2. Privileged Helper Daemon" } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "2. バックグラウンドデーモン (Privileged Helper)" } }
+      }
+    },
+    "onboarding.legacy.description" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "An older version of this app was found in /Applications. You can move it to the Trash to avoid conflicts." } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "旧バージョンのアプリが /Applications に残っています。競合を防ぐためゴミ箱に移動できます。" } }
+      }
+    },
+    "onboarding.legacy.title" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Legacy BitLockerMounter detected" } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "旧バージョン (BitLockerMounter) が検出されました" } }
+      }
+    },
+    "onboarding.legacy.trash" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Move to Trash" } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "ゴミ箱に移動" } }
+      }
+    },
+    "onboarding.title" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Mac BDE Mounter Setup" } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "Mac BDE Mounter セットアップ" } }
+      }
+    },
+    "onboarding.window.title" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Mac BDE Mounter Setup" } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "Mac BDE Mounter セットアップ" } }
+      }
+    },
+    "oss.dislocker.purpose" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "BitLocker® encrypted partition decryption engine, providing access to NTFS/FAT/exFAT volumes via FUSE." } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "BitLocker® 暗号化パーティションの復号エンジン。FUSE を介して NTFS/FAT/exFAT ボリュームへのアクセスを提供します。" } }
+      }
+    },
+    "oss.fuset.purpose" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "User-space NFSv4 filesystem driver bridge enabling FUSE without kernel extensions." } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "カーネル拡張（KEXT）不要で FUSE を実現するユーザースペース NFSv4 ファイルシステムブリッジ。" } }
+      }
+    },
+    "oss.mbedtls.purpose" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Cryptographic library providing AES, SHA-256, and BitLocker® cipher primitives." } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "AES, SHA-256 および BitLocker® 暗号プリミティブを提供する暗号化ライブラリ。" } }
+      }
+    },
+    "oss.sparkle.purpose" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Secure automated software update framework for macOS." } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "macOS 向け安全な自動ソフトウェアアップデートフレームワーク。" } }
+      }
+    },
+    "prompt.cancel" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Cancel" } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "キャンセル" } }
+      }
+    },
+    "prompt.message %@" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Enter the password to unlock the encrypted drive '%@':" } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "暗号化ドライブ '%@' をロック解除するためのパスワードを入力してください:" } }
+      }
+    },
+    "prompt.placeholder" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Password" } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "パスワード" } }
+      }
+    },
+    "prompt.title" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "BitLocker® Password Required" } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "BitLocker® パスワードの入力" } }
+      }
+    },
+    "prompt.unlock" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Unlock" } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "ロック解除" } }
+      }
+    },
+    "status.locked" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Locked" } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "ロック中" } }
+      }
+    },
+    "status.mounted" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Mounted" } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "マウント完了" } }
+      }
+    },
+    "status.mounting" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Mounting..." } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "マウント中..." } }
+      }
+    },
+    "status.mountFailed" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Mount failed" } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "マウント失敗" } }
+      }
+    },
+    "status.unmounting" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Unmounting..." } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "アンマウント中..." } }
+      }
+    },
+    "status.unlockFailed %@" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Unlock failed: %@" } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "ロック解除失敗: %@" } }
+      }
+    },
+    "status.unlocking" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Unlocking..." } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "ロック解除中..." } }
+      }
+    },
+    "uninstaller.confirm.action" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Run Uninstaller" } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "アンインストールを実行" } }
+      }
+    },
+    "uninstaller.confirm.body" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "This will completely remove Mac BDE Mounter and all associated components from your system:\n\n• Safely unmount active BitLocker® virtual volumes\n• Background privileged helper daemon (/Library/PrivilegedHelperTools/...)\n• LaunchDaemon service definitions (/Library/LaunchDaemons/...)\n• FUSE-T and support libraries (/Library/Application Support/MacBDEMounter)\n• Temporary mount points and working logs (/tmp/blm-*, /private/tmp/dislocker_*)\n• User preferences, caches, and application state\n• Full Disk Access permissions (TCC settings reset)\n• Application bundle (/Applications/MacBDEMounter.app)\n\nAdministrator authorization (Touch ID or password) is required to proceed. Do you wish to continue?" } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "Mac BDE Mounter とその関連コンポーネントをシステムから完全に削除します：\n\n• マウント中の BitLocker® 仮想ボリュームの安全な解除\n• バックグラウンド特権ヘルパーデーモン (/Library/PrivilegedHelperTools/...)\n• LaunchDaemon サービス設定 (/Library/LaunchDaemons/...)\n• FUSE-T および依存ライブラリ (/Library/Application Support/MacBDEMounter)\n• 一時マウントポイントおよび作業ログ (/tmp/blm-*, /private/tmp/dislocker_*)\n• ユーザー環境設定、キャッシュ、保存された状態\n• フルディスクアクセス権限 (TCC 設定のリセット)\n• アプリケーション本体 (/Applications/MacBDEMounter.app)\n\n続行するには管理者権限（Touch ID またはパスワード）が必要です。アンインストールを実行しますか？" } }
+      }
+    },
+    "uninstaller.confirm.cancel" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Cancel" } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "キャンセル" } }
+      }
+    },
+    "uninstaller.confirm.terminal" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Run in Terminal..." } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "ターミナルで実行..." } }
+      }
+    },
+    "uninstaller.confirm.title" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Uninstall Mac BDE Mounter" } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "Mac BDE Mounter の完全アンインストール" } }
+      }
+    },
+    "uninstaller.failed.body %@" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Error details:\n%@\n\nPlease run 'sudo ./scripts/uninstall.sh' from Terminal." } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "エラー詳細:\n%@\n\nターミナルから 'sudo ./scripts/uninstall.sh' を実行してください。" } }
+      }
+    },
+    "uninstaller.failed.title" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Uninstallation Failed" } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "アンインストールに失敗しました" } }
+      }
+    },
+    "uninstaller.launchFailed.title" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Failed to launch uninstaller" } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "アンインストーラーの起動に失敗しました" } }
+      }
+    },
+    "uninstaller.notFound.body" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "uninstall.sh was not found. Please run 'sudo ./scripts/uninstall.sh' or 'make uninstall' from Terminal." } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "uninstall.sh が見つかりませんでした。ターミナルから 'sudo ./scripts/uninstall.sh' または 'make uninstall' を実行してください。" } }
+      }
+    },
+    "uninstaller.notFound.title" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Uninstaller script not found" } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "アンインストーラーが見つかりません" } }
+      }
+    },
+    "uninstaller.success.body" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "All components have been completely removed. Mac BDE Mounter will now quit." } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "すべてのコンポーネントが完全に削除されました。Mac BDE Mounter を終了します。" } }
+      }
+    },
+    "uninstaller.success.title" : {
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Uninstallation Complete" } },
+        "ja" : { "stringUnit" : { "state" : "translated", "value" : "アンインストールが完了しました" } }
+      }
+    }
+  },
+  "version" : "1.0"
+}

@@ -1,0 +1,105 @@
+name: MacBDEMounter
+options:
+  bundleIdPrefix: top.agata
+  deploymentTarget:
+    macOS: "13.0"
+  createIntermediateGroups: true
+  # English is the source language; every other language is a translation in the
+  # String Catalogs (App/Resources/*.xcstrings). To add a language, append its code
+  # here and translate the catalogs (see README "Adding a language").
+  developmentLanguage: en
+  knownRegions:
+    - en
+    - ja
+    - Base
+
+packages:
+  Sparkle:
+    url: https://github.com/sparkle-project/Sparkle
+    from: "2.6.0"
+
+settings:
+  configs:
+    Debug:
+      SWIFT_OPTIMIZATION_LEVEL: "-Onone"
+      DEBUG_INFORMATION_FORMAT: "dwarf"
+      SWIFT_ACTIVE_COMPILATION_CONDITIONS: "DEBUG"
+    Release:
+      SWIFT_OPTIMIZATION_LEVEL: "-O"
+      DEBUG_INFORMATION_FORMAT: "dwarf-with-dsym"
+  base:
+    MACOSX_DEPLOYMENT_TARGET: "13.0"
+    SWIFT_VERSION: "5.0"
+    LOCALIZATION_PREFERS_STRING_CATALOGS: YES
+    SWIFT_EMIT_LOC_STRINGS: YES
+
+targets:
+  MacBDEMounter:
+    type: application
+    platform: macOS
+    configFiles:
+      Debug: Config/Base.xcconfig
+      Release: Config/Base.xcconfig
+    sources:
+      - path: App
+      - path: Shared
+    info:
+      path: Config/App-Info.plist
+      properties:
+        CFBundleDevelopmentRegion: en
+        CFBundleDisplayName: "Mac BDE Mounter"
+        CFBundleIconFile: "AppIcon"
+        CFBundleShortVersionString: "1.0.0"
+        CFBundleVersion: "1"
+        NSHumanReadableCopyright: "Copyright © 2026 K. Agata. All rights reserved."
+        # Localized values live in App/Resources/InfoPlist.xcstrings.
+        NSRemovableVolumesUsageDescription: "Mac BDE Mounter needs access to removable volumes to detect, unlock, and mount BitLocker®-encrypted external drives."
+        NSSystemAdministrationUsageDescription: "Mac BDE Mounter needs administrator privileges to install and manage its background disk-mounting service."
+    entitlements:
+      path: Config/App.entitlements
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: top.agata.MacBDEMounter
+        ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
+    dependencies:
+      - target: MacBDEMounterHelper
+        copy:
+          destination: executables
+      - package: Sparkle
+    postBuildScripts:
+      - name: Embed Bundled Dependencies
+        script: "${PROJECT_DIR}/scripts/embed-deps.sh"
+
+  MacBDEMounterHelper:
+    type: tool
+    platform: macOS
+    configFiles:
+      Debug: Config/Base.xcconfig
+      Release: Config/Base.xcconfig
+    sources:
+      - path: Helper
+      - path: Shared
+    info:
+      path: Config/Helper-Info.plist
+    entitlements:
+      path: Config/Helper.entitlements
+    settings:
+      base:
+        PRODUCT_NAME: "MacBDEMounterHelper"
+        PRODUCT_BUNDLE_IDENTIFIER: top.agata.MacBDEMounter.helper
+        CREATE_INFOPLIST_SECTION_IN_BINARY: "YES"
+
+  MacBDEMounterTests:
+    type: bundle.unit-test
+    platform: macOS
+    settings:
+      base:
+        GENERATE_INFOPLIST_FILE: YES
+    sources:
+      - path: Tests
+      - path: Shared
+      - path: Helper/MountSession.swift
+      - path: Helper/FuseTInstaller.swift
+      - path: Helper/ProcessRunner.swift
+    dependencies:
+      - target: MacBDEMounter

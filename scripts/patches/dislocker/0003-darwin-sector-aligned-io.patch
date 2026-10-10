@@ -1,0 +1,40 @@
+--- a/src/common.c	2026-10-10 10:37:14
++++ b/src/common.c	2026-10-10 10:37:14
+@@ -125,7 +125,7 @@
+ 
+ 	dis_printf(L_DEBUG, "Reading %# " F_SIZE_T " bytes from #%d into %p\n", count, fd, buf);
+ 
+-#ifdef __FREEBSD
++#if defined(__FREEBSD) || defined(__DARWIN)
+ 	/*
+ 	 * FreeBSD's devices are character devices which are to be accessed one
+ 	 * block at a time. Exactly what one block is remains a mystery atm, so we
+@@ -159,7 +159,12 @@
+ 		return -1;
+ 	}
+ 
++#if defined(__DARWIN)
++	if(posix_memalign(&buf, 4096, count * sizeof(char)) != 0)
++		buf = NULL;
++#else
+ 	buf = dis_malloc(count * sizeof(char));
++#endif
+ 	if(buf == NULL)
+ 	{
+ 		dis_printf(
+@@ -178,10 +183,14 @@
+ 		dis_printf(L_ERROR, DIS_XREAD_FAIL_STR " #%d: %s\n", fd, strerror(errno));
+ 	}
+ 
+-#ifdef __FREEBSD
++#if defined(__FREEBSD) || defined(__DARWIN)
+ 	/* What is remaining is just to copy actual data */
+ 	memcpy(old_buf, (char*) buf + (offset - new_offset), old_count);
++#if defined(__DARWIN)
++	free(buf);
++#else
+ 	dis_free(buf);
++#endif
+ 
+ 	if(lseek(fd, offset + (off_t)old_count, SEEK_SET) == -1)
+ 	{

@@ -1,0 +1,55 @@
+--- a/src/dislocker-fuse.c	2026-10-06 21:35:44
++++ b/src/dislocker-fuse.c	2026-10-06 21:35:44
+@@ -34,7 +34,16 @@
+ 
+ # include <fuse.h>
+ 
++/*
++ * BitLockerMounter: the fuse_darwin_* types are specific to macFUSE 5.
++ * FUSE-T implements the standard libfuse3 API, so only use the Darwin
++ * variants when explicitly requested.
++ */
++#if defined(__APPLE__) && defined(DIS_USE_MACFUSE)
++# define DIS_MACFUSE_DARWIN_API 1
++#endif
+ 
++
+ /** NTFS virtual partition's name */
+ #define NTFS_FILENAME "dislocker-file"
+ #define NTFS_FILERELATIVEPATH "/" NTFS_FILENAME
+@@ -54,7 +63,7 @@
+ /**
+  * Stubs used for FUSE operations.
+  */
+-#ifdef __APPLE__
++#ifdef DIS_MACFUSE_DARWIN_API
+ static int fs_getattr(const char *path, struct fuse_darwin_attr *stbuf,
+                       struct fuse_file_info *fi)
+ #else
+@@ -71,7 +80,7 @@
+ 	memset(stbuf, 0, sizeof(*stbuf));
+ 	if(strcmp(path, "/") == 0)
+ 	{
+-#ifdef __APPLE__
++#ifdef DIS_MACFUSE_DARWIN_API
+ 		stbuf->mode = S_IFDIR | 0555;
+ 		stbuf->nlink = 2;
+ #else
+@@ -82,7 +91,7 @@
+ 	else if(strcmp(path, NTFS_FILERELATIVEPATH) == 0)
+ 	{
+ 		mode_t m = dis_is_read_only(dis_ctx) ? 0444 : 0666;
+-#ifdef __APPLE__
++#ifdef DIS_MACFUSE_DARWIN_API
+ 		stbuf->mode = S_IFREG | m;
+ 		stbuf->nlink = 1;
+ 		stbuf->size = (off_t)dis_inouts_volume_size(dis_ctx);
+@@ -98,7 +107,7 @@
+ 	return res;
+ }
+ 
+-#ifdef __APPLE__
++#ifdef DIS_MACFUSE_DARWIN_API
+ static int fs_readdir(const char *path, void *buf, fuse_darwin_fill_dir_t filler,
+                       off_t offset, struct fuse_file_info *fi,
+                       enum fuse_readdir_flags flags)

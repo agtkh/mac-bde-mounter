@@ -1,0 +1,86 @@
+name: Release Build and Notarization
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+jobs:
+  build-and-release:
+    runs-on: macos-14
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          submodules: recursive
+
+      - name: Install dependencies
+        run: |
+          brew install cmake xcodegen
+
+      - name: Build standalone dependencies
+        run: |
+          make deps
+
+      - name: Generate Xcode Project
+        run: |
+          make project
+
+      - name: Run Unit Tests
+        run: |
+          make test
+
+      - name: Set up Developer ID Certificate
+        if: env.DEVELOPER_ID_CERT_BASE64 != ''
+        env:
+          DEVELOPER_ID_CERT_BASE64: ${{ secrets.DEVELOPER_ID_CERT_BASE64 }}
+          DEVELOPER_ID_CERT_PASSWORD: ${{ secrets.DEVELOPER_ID_CERT_PASSWORD }}
+          KEYCHAIN_PASSWORD: ${{ secrets.KEYCHAIN_PASSWORD || 'actions-temp-keychain' }}
+        run: |
+          KEYCHAIN_PATH=$RUNNER_TEMP/build.keychain
+          security create-keychain -p "$KEYCHAIN_PASSWORD" "$KEYCHAIN_PATH"
+          security set-keychain-settings -lut 21600 "$KEYCHAIN_PATH"
+          security unlock-keychain -p "$KEYCHAIN_PASSWORD" "$KEYCHAIN_PATH"
+
+          echo "$DEVELOPER_ID_CERT_BASE64" | base64 --decode > $RUNNER_TEMP/certificate.p12
+          security import $RUNNER_TEMP/certificate.p12 -k "$KEYCHAIN_PATH" -P "$DEVELOPER_ID_CERT_PASSWORD" -T /usr/bin/codesign
+          security set-key-partition-list -S apple-tool:,apple:,codesign: -s -k "$KEYCHAIN_PASSWORD" "$KEYCHAIN_PATH"
+          security list-keychains -d user -s "$KEYCHAIN_PATH" $(security list-keychains -d user | sed -e 's/^[ \t]*//' | tr -d '"')
+
+      - name: Build and Sign Release App
+        env:
+          IDENTITY: ${{ secrets.DEVELOPER_ID_IDENTITY || '-' }}
+          TEAM_ID: ${{ secrets.APPLE_TEAM_ID || '' }}
+        run: |
+          make CONFIG=Release build
+          make CONFIG=Release IDENTITY="$IDENTITY" sign
+
+      - name: Create DMG
+        run: |
+          make CONFIG=Release dmg
+
+      - name: Notarize DMG
+        if: env.NOTARY_API_KEY_BASE64 != ''
+        env:
+          NOTARY_API_KEY_BASE64: ${{ secrets.NOTARY_API_KEY_BASE64 }}
+          NOTARY_KEY_ID: ${{ secrets.NOTARY_KEY_ID }}
+          NOTARY_ISSUER_ID: ${{ secrets.NOTARY_ISSUER_ID }}
+        run: |
+          mkdir -p ~/.appstoreconnect/private_keys
+          echo "$NOTARY_API_KEY_BASE64" | base64 --decode > ~/.appstoreconnect/private_keys/AuthKey_${NOTARY_KEY_ID}.p8
+          xcrun notarytool submit build.nosync/MacBDEMounter.dmg \
+            --key "$HOME/.appstoreconnect/private_keys/AuthKey_${NOTARY_KEY_ID}.p8" \
+            --key-id "$NOTARY_KEY_ID" \
+            --issuer "$NOTARY_ISSUER_ID" \
+            --wait
+          xcrun stapler staple build.nosync/MacBDEMounter.dmg
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: |
+            build.nosync/MacBDEMounter.dmg
+          generate_release_notes: true
