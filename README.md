@@ -52,19 +52,57 @@
 
 ---
 
+## Installation & Quick Start (No Build Required)
+
+Mac BDE Mounter provides pre-built release packages (DMG). **You do NOT need to install Xcode, Homebrew, or compile the source code.**
+
+Because this is an independent open-source project distributed without Apple's paid Developer Program certificates ($99/yr), you simply perform a one-time **self-sign (ad-hoc sign)** step after downloading.
+
+### 3-Step Quick Start
+
+1. **Download the DMG**:
+   Grab the latest `MacBDEMounter.dmg` from [**GitHub Releases**](https://github.com/agtkh/mac-bed-mounter/releases).
+2. **Move to Applications**:
+   Open `MacBDEMounter.dmg` and drag `MacBDEMounter.app` into your **Applications** folder.
+3. **Run Self-Sign (Clear Gatekeeper)**:
+   Double-click **`SelfSign.command`** in the DMG.
+   > [!TIP]
+   > If macOS warns that the script "cannot be opened because the developer cannot be verified", simply **right-click (or Control-click) `SelfSign.command` and choose "Open"**.
+   >
+   > **Terminal users**: You can achieve the same with a single command:
+   > ```bash
+   > sudo xattr -cr /Applications/MacBDEMounter.app && codesign --force --deep -s - /Applications/MacBDEMounter.app
+   > ```
+
+### First-Launch Setup
+
+1. Launch `/Applications/MacBDEMounter.app`. Its icon will appear in your menu bar.
+2. **Grant Full Disk Access**:
+   Open **System Settings > Privacy & Security > Full Disk Access** and toggle **Mac BDE Mounter** on.
+   *(Required to detect BitLocker volumes on connected disks without triggering macOS initialization prompts).*
+3. **Approve Privileged Helper**:
+   When prompted for administrator permission to set up the background mounting helper, approve via Touch ID or password.
+
+That's it! Plug in any Windows BitLocker-encrypted external drive, and Mac BDE Mounter will automatically recognize it and present an unlock prompt.
+
+---
+
 ## Requirements
 
 - **Operating System**: macOS 13.0 (Ventura) or later
 - **Hardware**: Apple Silicon Mac (M1 / M2 / M3 / M4 / M5)
-- **Build Tools**:
-  - Xcode 15 or later (or Command Line Tools + Xcode.app)
-  - `cmake` (`brew install cmake`)
-  - `xcodegen` (`brew install xcodegen`)
-  - Python 3 (`python3`)
 
 ---
 
-## Building from Source
+## Building from Source (For Developers)
+
+For developers who want to inspect, customize, or contribute to the project. Regular users can skip this and use the pre-built DMG above.
+
+### Build Prerequisites
+- Xcode 15 or later (or Command Line Tools + Xcode.app)
+- `cmake` (`brew install cmake`)
+- `xcodegen` (`brew install xcodegen`)
+- Python 3 (`python3`)
 
 The repository is fully automated for CLI workflows without requiring Xcode GUI interactions.
 

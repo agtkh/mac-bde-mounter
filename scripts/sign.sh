@@ -15,21 +15,25 @@ fi
 
 clean_xattrs() {
   local target="${1:-$APP}"
-  if command -v SetFile &>/dev/null; then
-    SetFile -a b "$target" 2>/dev/null || true
-    find "$target" -exec SetFile -a b {} + 2>/dev/null || true
+  if command -v xattr &>/dev/null; then
+    xattr -cr "$target" 2>/dev/null || true
+    xattr -s -c "$target" 2>/dev/null || true
+    find "$target" -exec xattr -c {} + 2>/dev/null || true
+    find "$target" -type l -exec xattr -s -c {} + 2>/dev/null || true
   fi
-  xattr -d com.apple.FinderInfo "$target" 2>/dev/null || true
-  xattr -d -s com.apple.FinderInfo "$target" 2>/dev/null || true
-  find "$target" -exec xattr -d com.apple.FinderInfo {} + 2>/dev/null || true
-  find "$target" -exec xattr -d -s com.apple.FinderInfo {} + 2>/dev/null || true
-  find "$target" -exec xattr -d com.apple.ResourceFork {} + 2>/dev/null || true
-  find "$target" -exec xattr -d -s com.apple.ResourceFork {} + 2>/dev/null || true
 }
+
+APP_REAL="$(cd "$(dirname "$APP")" && pwd -P)/$(basename "$APP")"
+STAGE_DIR="$(mktemp -d -t blm-sign.nosync)"
+trap 'rm -rf "$STAGE_DIR"' EXIT
+
+APP_BASENAME="$(basename "$APP_REAL")"
+ditto --noextattr --noqtn "$APP_REAL" "${STAGE_DIR}/${APP_BASENAME}"
+APP="${STAGE_DIR}/${APP_BASENAME}"
 
 clean_xattrs "$APP"
 
-echo "Signing application bundle at $APP with identity '$IDENTITY'..."
+echo "Signing application bundle at $APP_REAL with identity '$IDENTITY'..."
 
 SIGN_OPTS=(--force)
 if [[ "$IDENTITY" != "-" ]]; then
@@ -48,7 +52,6 @@ sign_item() {
     fi
   fi
 }
-
 
 # 1. Sign internal helper binaries & dylibs
 sign_item "${APP}/Contents/MacOS/bin/fuse-t/go-nfsv4"
@@ -85,6 +88,9 @@ clean_xattrs "$APP"
 codesign "${SIGN_OPTS[@]}" --sign "$IDENTITY" -r '= designated => identifier "top.agata.MacBDEMounter"' --entitlements "$ENT_APP" "$APP"
 
 echo "Verifying code signature..."
-clean_xattrs
+clean_xattrs "$APP"
 codesign --verify --deep --strict --verbose=2 "$APP"
 echo "Code signature valid."
+
+rm -rf "$APP_REAL"
+ditto --noextattr --noqtn "$APP" "$APP_REAL"

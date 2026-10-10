@@ -52,21 +52,58 @@
 
 ---
 
-## 動作要件
+## インストールとクイックスタート（ビルド不要）
 
-- **OS**: macOS 13.0 (Ventura) 以降
-- **対応ハードウェア**: Apple Silicon Mac (M1 / M2 / M3 / M4 / M5)
-- **ビルドツール**:
-  - Xcode 15 以降（または Command Line Tools + Xcode.app）
-  - `cmake` (`brew install cmake`)
-  - `xcodegen` (`brew install xcodegen`)
-  - Python 3 (`python3`)
+Mac BDE Mounter は事前ビルド済みパッケージ（DMG）を提供しています。**ソースコードのビルドや Xcode、Homebrew のインストールは一切不要です。**
+
+Apple の高額な有料開発者証明書（年間$99）を介さずにオープンソースとして配布しているため、ダウンロード後に**自己署名（アドホック署名）**を1度行うだけですぐに使用できます。
+
+### 簡単3ステップで使い始める
+
+1. **DMG をダウンロード**:
+   [**GitHub Releases**](https://github.com/agtkh/mac-bed-mounter/releases) から最新の `MacBDEMounter.dmg` をダウンロードします。
+2. **Applications に配置**:
+   ダウンロードした `MacBDEMounter.dmg` を開き、`MacBDEMounter.app` を **Applications** フォルダにドラッグ＆ドロップします。
+3. **自己署名（Gatekeeper 検疫解除）を実行**:
+   DMG 内にある **`SelfSign.command`** をダブルクリックします。
+   > [!TIP]
+   > 初回起動時に「開発元を検証できないため開けません」と警告された場合は、`SelfSign.command` を**右クリック（または Control キーを押しながらクリック）して「開く」**を選択してください。
+   > 
+   > **ターミナル派の方**: 以下のコマンドを1行実行するだけでも完了します:
+   > ```bash
+   > sudo xattr -cr /Applications/MacBDEMounter.app && codesign --force --deep -s - /Applications/MacBDEMounter.app
+   > ```
+
+### 初回起動時の設定
+
+1. `/Applications/MacBDEMounter.app` を起動します。メニューバーにアイコンが表示されます。
+2. **フルディスクアクセス (Full Disk Access) を許可**:
+   macOS の **システム設定 > プライバシーとセキュリティ > フルディスクアクセス** を開き、**Mac BDE Mounter** を「オン」にしてください。
+   *(※接続された外付けドライブから初期化警告を出さずに BitLocker ボリュームを検知するために必要です)*
+3. **特権ヘルパーの承認**:
+   バックグラウンドでのマウント処理を担当するヘルパーデーモンのインストール確認が表示されたら、管理者パスワードまたは Touch ID を入力して承認します。
+
+これで準備完了です！Windows で暗号化された BitLocker ドライブを接続すると自動的に認識され、パスワード入力プロンプトが表示されます。
 
 ---
 
-## ソースコードからのビルド
+## 動作環境
 
-Xcode GUI を開かずに、ターミナル（CLI）のみで完全ビルド・テストが可能です。
+- **OS**: macOS 13.0 (Ventura) 以降
+- **対応ハードウェア**: Apple Silicon Mac (M1 / M2 / M3 / M4 / M5)
+
+---
+
+## ソースコードからのビルド（開発者向け）
+
+自分でビルドやカスタマイズを行いたい開発者向けの手順です。通常利用のユーザーは上記の手順でバイナリをご利用いただけます。
+
+### 必要な開発ツール
+- Xcode 15 以降（または Command Line Tools + Xcode.app）
+- `cmake` (`brew install cmake`)
+- `xcodegen` (`brew install xcodegen`)
+- Python 3 (`python3`)
+
 
 ### 1. サードパーティ依存ライブラリのビルド (dislocker, mbedTLS, FUSE-T)
 

@@ -20,8 +20,17 @@ ln -s /Applications "${STAGING}/Applications"
 cp "${ROOT}/LICENSE" "${STAGING}/LICENSE.txt"
 cp "${ROOT}/THIRD_PARTY_NOTICES.md" "${STAGING}/THIRD_PARTY_NOTICES.txt"
 cp "${ROOT}/TRADEMARKS.md" "${STAGING}/TRADEMARKS.txt"
+cp "${ROOT}/scripts/self-sign.sh" "${STAGING}/SelfSign.command"
+chmod 755 "${STAGING}/SelfSign.command"
 cp "${ROOT}/scripts/uninstall.sh" "${STAGING}/Uninstall.command"
 chmod 755 "${STAGING}/Uninstall.command"
+
+# Clean any extended attributes or detritus from staging
+if command -v xattr &>/dev/null; then
+  xattr -cr "$STAGING" 2>/dev/null || true
+  find "$STAGING" -exec xattr -c {} + 2>/dev/null || true
+  find "$STAGING" -type l -exec xattr -s -c {} + 2>/dev/null || true
+fi
 
 # Set DMG volume icon
 if [[ -f "${ROOT}/App/Resources/AppIcon.icns" ]]; then

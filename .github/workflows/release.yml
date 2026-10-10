@@ -1,9 +1,10 @@
-name: Release Build and Notarization
+name: Release Build and Packaging
 
 on:
   push:
     tags:
       - 'v*'
+  workflow_dispatch:
 
 jobs:
   build-and-release:
@@ -34,7 +35,7 @@ jobs:
           make test
 
       - name: Set up Developer ID Certificate
-        if: env.DEVELOPER_ID_CERT_BASE64 != ''
+        if: ${{ secrets.DEVELOPER_ID_CERT_BASE64 != '' }}
         env:
           DEVELOPER_ID_CERT_BASE64: ${{ secrets.DEVELOPER_ID_CERT_BASE64 }}
           DEVELOPER_ID_CERT_PASSWORD: ${{ secrets.DEVELOPER_ID_CERT_PASSWORD }}
@@ -62,8 +63,8 @@ jobs:
         run: |
           make CONFIG=Release dmg
 
-      - name: Notarize DMG
-        if: env.NOTARY_API_KEY_BASE64 != ''
+      - name: Notarize DMG (Optional)
+        if: ${{ secrets.NOTARY_API_KEY_BASE64 != '' && secrets.NOTARY_KEY_ID != '' && secrets.NOTARY_ISSUER_ID != '' }}
         env:
           NOTARY_API_KEY_BASE64: ${{ secrets.NOTARY_API_KEY_BASE64 }}
           NOTARY_KEY_ID: ${{ secrets.NOTARY_KEY_ID }}
@@ -80,7 +81,25 @@ jobs:
 
       - name: Create GitHub Release
         uses: softprops/action-gh-release@v2
+        if: startsWith(github.ref, 'refs/tags/') || github.event_name == 'workflow_dispatch'
         with:
+          tag_name: ${{ github.ref_name }}
           files: |
             build.nosync/MacBDEMounter.dmg
           generate_release_notes: true
+          body: |
+            ### 🚀 Mac BDE Mounter Release
+
+            Standalone pre-built distribution for macOS 13+ (Apple Silicon M1-M5).
+
+            #### 📥 Quick Install Instructions:
+            1. Download `MacBDEMounter.dmg`.
+            2. Open the DMG and drag `MacBDEMounter.app` into your **Applications** folder.
+            3. Double-click **`SelfSign.command`** in the DMG (or right-click -> Open) to clear Gatekeeper quarantine and self-sign the application.
+               - *Alternatively, run this in Terminal:*
+                 ```bash
+                 sudo xattr -cr /Applications/MacBDEMounter.app && codesign --force --deep -s - /Applications/MacBDEMounter.app
+                 ```
+            4. Launch **Mac BDE Mounter**.
+            5. Grant **Full Disk Access** in *System Settings > Privacy & Security > Full Disk Access*.
+
