@@ -56,7 +56,7 @@
 
 Mac BDE Mounter provides pre-built release packages (DMG). **You do NOT need to install Xcode, Homebrew, or compile the source code.**
 
-Because this is an independent open-source project distributed without Apple's paid Developer Program certificates ($99/yr), you simply perform a one-time **self-sign (ad-hoc sign)** step after downloading.
+Because this is an independent open-source project distributed without Apple's paid Developer Program certificates ($99/yr), you simply run the **initial setup tool** once after downloading to unlock macOS download security.
 
 ### 3-Step Quick Start
 
@@ -64,10 +64,10 @@ Because this is an independent open-source project distributed without Apple's p
    Grab the latest `MacBDEMounter.dmg` from [**GitHub Releases**](https://github.com/agtkh/mac-bde-mounter/releases).
 2. **Move to Applications**:
    Open `MacBDEMounter.dmg` and drag `MacBDEMounter.app` into your **Applications** folder.
-3. **Run Self-Sign (Clear Gatekeeper)**:
-   Double-click **`SelfSign.command`** in the DMG.
+3. **Run Initial Setup**:
+   Double-click **`Setup.command`** in the DMG.
    > [!TIP]
-   > If macOS warns that the script "cannot be opened because the developer cannot be verified", simply **right-click (or Control-click) `SelfSign.command` and choose "Open"**.
+   > If macOS warns that the script "cannot be opened because the developer cannot be verified", simply **right-click (or Control-click) `Setup.command` and choose "Open"**.
    >
    > **Terminal users**: You can achieve the same with a single command:
    > ```bash

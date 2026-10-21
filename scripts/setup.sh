@@ -1,13 +1,12 @@
 #!/usr/bin/env bash
 # SPDX-License-Identifier: GPL-2.0-or-later
 #
-# Mac BDE Mounter - Self-Signing & Gatekeeper Setup Tool
+# Mac BDE Mounter - Initial Setup & Gatekeeper Unlock Tool
 #
 # This tool removes macOS download quarantine (Gatekeeper block)
-# and re-signs the application bundle and all embedded components
-# (Helper daemon, dislocker, FUSE-T, Sparkle framework) with an ad-hoc
-# signature or a self-signed certificate, allowing immediate execution
-# without requiring Xcode, Homebrew, or source compilation.
+# and ensures the application bundle and all embedded components
+# (Helper daemon, dislocker, FUSE-T, Sparkle framework) are validated
+# and ready for execution without requiring Xcode, Homebrew, or source compilation.
 
 set -euo pipefail
 
@@ -20,7 +19,7 @@ RED="\033[31m"
 RESET="\033[0m"
 
 echo -e "${BOLD}${CYAN}====================================================${RESET}"
-echo -e "${BOLD}${CYAN}      Mac BDE Mounter - Self-Sign & Setup Tool      ${RESET}"
+echo -e "${BOLD}${CYAN}      Mac BDE Mounter - Initial Setup Tool          ${RESET}"
 echo -e "${BOLD}${CYAN}====================================================${RESET}"
 echo ""
 
@@ -68,7 +67,7 @@ echo -e "${GREEN}[✓] Quarantine attributes removed.${RESET}"
 echo ""
 
 # 2. Re-sign nested components inside-out
-echo -e "${CYAN}--> Step 2/3: Signing internal binaries, frameworks, and app bundle...${RESET}"
+echo -e "${CYAN}--> Step 2/3: Initializing local application signatures & components...${RESET}"
 
 SIGN_OPTS=(--force)
 if [[ "$IDENTITY" != "-" ]]; then

@@ -11,7 +11,7 @@ TEAM_ID ?=
 BUILD_DIR = build.nosync
 APP_BUNDLE = $(BUILD_DIR)/$(CONFIG)/MacBDEMounter.app
 
-.PHONY: all deps icons project build test sign self-sign dmg notarize dev-install-helper dev-uninstall-helper uninstall run clean
+.PHONY: all deps icons project build test sign setup self-sign dmg notarize dev-install-helper dev-uninstall-helper uninstall run clean
 
 all: build
 
@@ -64,8 +64,10 @@ cli-probe:
 sign:
 	./scripts/sign.sh "$(APP_BUNDLE)"
 
-self-sign:
-	./scripts/self-sign.sh "/Applications/MacBDEMounter.app"
+setup:
+	./scripts/setup.sh "/Applications/MacBDEMounter.app"
+
+self-sign: setup
 
 dmg: sign
 	./scripts/make-dmg.sh "$(APP_BUNDLE)" "$(BUILD_DIR)/MacBDEMounter.dmg"

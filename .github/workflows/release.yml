@@ -98,7 +98,7 @@ jobs:
             #### 📥 Quick Install Instructions:
             1. Download `MacBDEMounter.dmg`.
             2. Open the DMG and drag `MacBDEMounter.app` into your **Applications** folder.
-            3. Double-click **`SelfSign.command`** in the DMG (or right-click -> Open) to clear Gatekeeper quarantine and self-sign the application.
+            3. Double-click **`Setup.command`** in the DMG (or right-click -> Open) to clear Gatekeeper download quarantine and prepare the app.
                - *Alternatively, run this in Terminal:*
                  ```bash
                  sudo xattr -cr /Applications/MacBDEMounter.app && codesign --force --deep -s - /Applications/MacBDEMounter.app
