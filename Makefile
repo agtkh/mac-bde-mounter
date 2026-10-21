@@ -11,7 +11,7 @@ TEAM_ID ?=
 BUILD_DIR = build.nosync
 APP_BUNDLE = $(BUILD_DIR)/$(CONFIG)/MacBDEMounter.app
 
-.PHONY: all deps icons project build test sign setup self-sign dmg notarize dev-install-helper dev-uninstall-helper uninstall run clean
+.PHONY: all deps icons project build test sign setup self-sign dmg release notarize dev-install-helper dev-uninstall-helper uninstall run clean
 
 all: build
 
@@ -71,6 +71,13 @@ self-sign: setup
 
 dmg: sign
 	./scripts/make-dmg.sh "$(APP_BUNDLE)" "$(BUILD_DIR)/MacBDEMounter.dmg"
+
+TAG ?= $(shell git describe --tags --exact-match 2>/dev/null || echo "v1.0.0")
+
+release: dmg
+	@echo "Uploading DMG to GitHub Releases for tag $(TAG)..."
+	gh release upload $(TAG) $(BUILD_DIR)/MacBDEMounter.dmg --clobber || \
+	gh release create $(TAG) $(BUILD_DIR)/MacBDEMounter.dmg --title "Mac BDE Mounter $(TAG)" --notes "### 🚀 Mac BDE Mounter $(TAG) Release\n\n#### 📥 インストール手順（ビルド不要）\n1. \`MacBDEMounter.dmg\` をダウンロード\n2. \`MacBDEMounter.app\` を Applications フォルダにドラッグ＆ドロップ\n3. DMG 内の **\`Setup.command\`** をダブルクリック（初期セットアップ完了）\n4. アプリを起動し、システム設定で「フルディスクアクセス」をオンにする"
 
 notarize:
 	./scripts/notarize.sh "$(BUILD_DIR)/MacBDEMounter.dmg"
