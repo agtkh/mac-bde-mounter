@@ -27,6 +27,15 @@ jobs:
         with:
           submodules: recursive
 
+      - name: Select Xcode 16
+        run: |
+          XCODE_APP=$(find /Applications -maxdepth 1 -name "Xcode_16*.app" | sort -V | tail -n 1)
+          if [ -n "$XCODE_APP" ]; then
+            echo "Selecting Xcode: $XCODE_APP"
+            sudo xcode-select -s "$XCODE_APP/Contents/Developer"
+            echo "DEVELOPER_DIR=$XCODE_APP/Contents/Developer" >> $GITHUB_ENV
+          fi
+
       - name: Install dependencies
         run: |
           brew install cmake xcodegen
